@@ -22,6 +22,14 @@ MongoClient.connect('mongodb://user1:webchallenges1@ds153093.mlab.com:53093/web-
     })
   })
 
+  app.post('/challenge-submission', (req, res) => {
+    db.collection('submissions').insertOne(req.body, (err, result) => {
+      if (err) return console.log(err)
+
+      console.log('saved to database')
+    })
+  })
+
   app.get('/challenges', (req, res) => {
     db.collection('challenges').find().toArray((err, results) => {
       if (err) return console.log(err)
