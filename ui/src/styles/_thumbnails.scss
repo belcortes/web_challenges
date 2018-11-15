@@ -1,0 +1,23 @@
+.challenge-list-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.thumbnail {
+  text-align: left;
+  height: 100%;
+  // display: flex;
+}
+
+.thumbnail .caption {
+  display: flex;
+  flex-direction: column;
+}
+
+.thumbnail>img {
+  display: none;
+}
+
+.challenge-list-item {
+  margin-bottom: 20px;
+}

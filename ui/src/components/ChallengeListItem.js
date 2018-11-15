@@ -6,8 +6,7 @@ import PropTypes from 'prop-types';
 const ChallengeListItem = ({ challenge }) => (
   <Col className="challenge-list-item" xs={6} md={4}>
     <Thumbnail>
-      <h3>Thumbnail label</h3>
-      <p>{challenge.name}</p>
+      <h3>{challenge.name}</h3>
       <p>{challenge.description}</p>
       <p>
         <Link to={`/challenge/${challenge._id}`}><Button bsStyle="primary">Select</Button></Link>

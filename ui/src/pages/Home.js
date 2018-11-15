@@ -6,8 +6,7 @@ const Home = () => (
     <Jumbotron>
       <h1>Hello, world!</h1>
       <p>
-        This is a simple hero unit, a simple jumbotron-style component for calling
-        extra attention to featured content or information.
+        Improve your skills and portfolio by coding! You can practice with challenges varying in skills. Look at what other people have done and submit your own
       </p>
     </Jumbotron>
   </div>
