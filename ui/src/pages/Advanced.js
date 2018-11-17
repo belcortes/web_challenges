@@ -5,17 +5,7 @@ import ChallengeList from '../components/ChallengeList';
 
 const Advanced = ({ challenges }) => (
   <div>
-    ADVANCED
-    <p>
-      Practice coding some simple web pages.
-      Skills needed:
-    </p>
-    <ul>
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>JS (some sort of Framework like React, Angular)</li>
-      <li>API Calls</li>
-    </ul>
+    <h2 className='page-title'>Advanced level challenges</h2>
     { !challenges
         ? 'loading'
         : <ChallengeList challenges={challenges} />

@@ -1,27 +1,49 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 class ProposalSubmission extends Component {
   state = {
-    c_type: ''
+    inputs: {
+      name: '',
+      description: '',
+      c_type: ''
+    }
   }
 
   handleInputChange = e => {
-    this.setState({ c_type: e.target.value });
+    this.setState({
+      inputs: {
+        ...this.state.inputs,
+        [e.target.name]: e.target.value,
+        created_at: Date.now()
+      }
+    });
   }
 
   handleSubmit = e => {
-    e.preventDefault();
-    this.props.history.push(`/${this.state.c_type}`);
+    // e.preventDefault();
+
+    axios.post('/challenges', this.state.inputs)
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+
+    this.props.history.push(`/${this.state.inputs.c_type}`);
   }
 
   render() {
     return (
       <div>
-        <form action="/challenges" method="POST" onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="name" name="name" />
-          <input type="text" placeholder="description" name="description" />
-          <select onChange={this.handleInputChange}>
+        <h2 className='page-title'>Submit a Proposal</h2>
+        <form onSubmit={this.handleSubmit}>
+          <input onChange={this.handleInputChange} type="text" placeholder="name" name="name" />
+          <input
+            onChange={this.handleInputChange}
+            type="text"
+            placeholder="description"
+            name="description"
+          />
+          <select onChange={this.handleInputChange} name="c_type">
             <option />
             <option value="begginer">Begginer</option>
             <option value="intermediate">Intermediate</option>

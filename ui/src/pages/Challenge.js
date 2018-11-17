@@ -5,7 +5,12 @@ import _ from 'lodash';
 
 class Challenge extends Component {
   state = {
-    challenge: {}
+    challenge: {},
+    inputs: {
+      name: '',
+      email: '',
+      url: ''
+    }
   }
 
   componentDidMount() {
@@ -16,6 +21,28 @@ class Challenge extends Component {
       .catch(error => {
         console.log(error);
       });
+  }
+
+  onInputChange = e => {
+    this.setState({
+      inputs: {
+        ...this.state.inputs,
+        [e.target.name]: e.target.value,
+        created_at: Date.now()
+      }
+    });
+  }
+
+  handleFormSubmit = e => {
+    e.preventDefault();
+
+    axios.post('/challenge-submission', this.state.inputs)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
   renderChallenge = challenge => (
@@ -34,10 +61,10 @@ class Challenge extends Component {
             ? 'loading'
             : this.renderChallenge(this.state.challenge)
         }
-        <form action="/challenge-submission" method="POST">
-          <input type="text" placeholder="name" name="name" />
-          <input type="text" placeholder="email" name="email" />
-          <input type="text" placeholder="github url" name="github-url" />
+        <form onSubmit={this.handleFormSubmit}>
+          <input type="text" placeholder="name" name="name" onChange={this.onInputChange} />
+          <input type="text" placeholder="email" name="email" onChange={this.onInputChange} />
+          <input type="text" placeholder="github url" name="github-url" onChange={this.onInputChange} />
           <button type="submit">Submit</button>
         </form>
       </div>

@@ -8,6 +8,7 @@ import Intermediate from './pages/Intermediate';
 import Advanced from './pages/Advanced';
 import Challenge from './pages/Challenge';
 import ProposalSubmission from './pages/ProposalSubmission';
+import NotFound from './pages/NotFound';
 
 class Routes extends Component {
   state = {
@@ -45,6 +46,7 @@ class Routes extends Component {
         />
         <Route exact path="/challenge/:id" component={Challenge} />
         <Route exact path="/proposal-submission" component={ProposalSubmission} />
+        <Route path='*' component={NotFound} />
       </Switch>
     );
   }

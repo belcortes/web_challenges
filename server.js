@@ -1,12 +1,22 @@
-const express = require('express');
+const express = require('express')
 const MongoClient = require('mongodb').MongoClient
 const bodyParser= require('body-parser')
+// import Unsplash from 'unsplash-js'
 
-const app = express();
-const port = process.env.PORT || 4000;
+const app = express()
+const port = process.env.PORT || 4000
 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}))
+
 ObjectId = require('mongodb').ObjectID
+// const Unsplash = require('unsplash-js').default;
+
+// const unsplash = new Unsplash({
+//   applicationId: "{89944751bbcb64d6af4fe6df7392b3ea52f8ddaa842f2ac6c096df36f6256b42}",
+//   secret: "{5d5763a31681494845de99a2285a7d149e6a30acb47faa75da0054d1ee50e7eb}",
+//   callbackUrl: "{CALLBACK_URL}"
+// });
 
 MongoClient.connect('mongodb://user1:webchallenges1@ds153093.mlab.com:53093/web-challenges', { useNewUrlParser: true }, (err,client) => {
   if (err) return console.log(err)

@@ -5,16 +5,7 @@ import ChallengeList from '../components/ChallengeList';
 
 const Intermediate = ({ challenges }) => (
   <div>
-    INTERMEDIATE STUFF
-    <p>
-      Practice coding some simple web pages.
-      Skills needed:
-    </p>
-    <ul>
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>JS</li>
-    </ul>
+    <h2 className='page-title'>Intermediate level challenges</h2>
     { !challenges
         ? 'loading'
         : <ChallengeList challenges={challenges} />
