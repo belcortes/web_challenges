@@ -47,9 +47,9 @@ class Challenge extends Component {
 
   renderChallenge = challenge => (
     <div>
-      <h2>Challenge here</h2>
-      <p>{challenge.name}</p>
+      <h2>{challenge.name}</h2>
       <p>{challenge.c_type}</p>
+      <p>{challenge.description}</p>
       <h2>Submit challenge</h2>
     </div>
   )
@@ -61,7 +61,7 @@ class Challenge extends Component {
             ? 'loading'
             : this.renderChallenge(this.state.challenge)
         }
-        <form onSubmit={this.handleFormSubmit}>
+        <form className="form" onSubmit={this.handleFormSubmit}>
           <input type="text" placeholder="name" name="name" onChange={this.onInputChange} />
           <input type="text" placeholder="email" name="email" onChange={this.onInputChange} />
           <input type="text" placeholder="github url" name="github-url" onChange={this.onInputChange} />

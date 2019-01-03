@@ -25,17 +25,18 @@ MongoClient.connect('mongodb://user1:webchallenges1@ds153093.mlab.com:53093/web-
   app.listen(port, () => console.log('listening on 4000'));
 
   app.post('/challenges', (req, res) => {
+    console.log('submitting challenge')
     db.collection('challenges').insertOne(req.body, (err, result) => {
       if (err) return console.log(err)
-
+      console.log(req.body)
       console.log('saved to database')
     })
   })
 
   app.post('/challenge-submission', (req, res) => {
+
     db.collection('submissions').insertOne(req.body, (err, result) => {
       if (err) return console.log(err)
-
       console.log('saved to database')
     })
   })
