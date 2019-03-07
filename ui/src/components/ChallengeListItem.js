@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Col, Thumbnail, Button } from 'react-bootstrap';
-import PropTypes from 'prop-types';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Col, Thumbnail, Button } from "react-bootstrap";
+import PropTypes from "prop-types";
 
 const ChallengeListItem = ({ challenge }) => (
   <Col className="challenge-list-item" xs={6} md={4}>
@@ -9,7 +9,9 @@ const ChallengeListItem = ({ challenge }) => (
       <h3>{challenge.name}</h3>
       <p>{challenge.description}</p>
       <p>
-        <Link to={`/challenge/${challenge._id}`}><Button bsStyle="primary">Select</Button></Link>
+        <Link to={`/challenge/${challenge._id}`}>
+          <Button bsStyle="primary">Select</Button>
+        </Link>
       </p>
     </Thumbnail>
   </Col>

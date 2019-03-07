@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
-import _ from 'lodash';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import axios from "axios";
+import _ from "lodash";
 
 class Challenge extends Component {
   state = {
     challenge: {},
     inputs: {
-      name: '',
-      email: '',
-      url: ''
+      name: "",
+      email: "",
+      url: ""
     }
-  }
+  };
 
   componentDidMount() {
-    axios.get('/challenge', { params: { id: this.props.match.params.id } })
+    axios
+      .get("/challenge", { params: { id: this.props.match.params.id } })
       .then(response => {
         this.setState({ challenge: response.data });
       })
@@ -31,19 +32,20 @@ class Challenge extends Component {
         created_at: Date.now()
       }
     });
-  }
+  };
 
   handleFormSubmit = e => {
     e.preventDefault();
 
-    axios.post('/challenge-submission', this.state.inputs)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
+    axios
+      .post("/challenge-submission", this.state.inputs)
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
 
   renderChallenge = challenge => (
     <div>
@@ -52,19 +54,33 @@ class Challenge extends Component {
       <p>{challenge.description}</p>
       <h2>Submit challenge</h2>
     </div>
-  )
+  );
 
   render() {
     return (
       <div>
-        { _.isEmpty(this.state.challenge)
-            ? 'loading'
-            : this.renderChallenge(this.state.challenge)
-        }
+        {_.isEmpty(this.state.challenge)
+          ? "loading"
+          : this.renderChallenge(this.state.challenge)}
         <form className="form" onSubmit={this.handleFormSubmit}>
-          <input type="text" placeholder="name" name="name" onChange={this.onInputChange} />
-          <input type="text" placeholder="email" name="email" onChange={this.onInputChange} />
-          <input type="text" placeholder="github url" name="github-url" onChange={this.onInputChange} />
+          <input
+            type="text"
+            placeholder="name"
+            name="name"
+            onChange={this.onInputChange}
+          />
+          <input
+            type="text"
+            placeholder="email"
+            name="email"
+            onChange={this.onInputChange}
+          />
+          <input
+            type="text"
+            placeholder="github url"
+            name="github-url"
+            onChange={this.onInputChange}
+          />
           <button type="submit">Submit</button>
         </form>
       </div>

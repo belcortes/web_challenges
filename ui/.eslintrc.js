@@ -24,7 +24,7 @@ module.exports = {
     // "react/prop-types": ['error', { ignore: 'map' }],
 
   },
-  "extends": "airbnb",
+  "extends": ["airbnb", "plugin:prettier/recommended"],
   "plugins": [
     "react"
   ]

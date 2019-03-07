@@ -1,6 +1,8 @@
 const express = require('express')
 const MongoClient = require('mongodb').MongoClient
-const bodyParser= require('body-parser')
+const bodyParser = require('body-parser')
+const multer = require('multer')
+const upload = multer({ dest: 'uploads/' })
 // import Unsplash from 'unsplash-js'
 
 const app = express()
@@ -24,11 +26,13 @@ MongoClient.connect('mongodb://user1:webchallenges1@ds153093.mlab.com:53093/web-
   db = client.db('web-challenges')
   app.listen(port, () => console.log('listening on 4000'));
 
-  app.post('/challenges', (req, res) => {
+  app.post('/challenges', upload.single('image_file'), (req, res) => {
     console.log('submitting challenge')
     db.collection('challenges').insertOne(req.body, (err, result) => {
       if (err) return console.log(err)
       console.log(req.body)
+      console.log(req.file)
+      console.log('file hereeee^^^^^')
       console.log('saved to database')
     })
   })

@@ -1,26 +1,19 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import axios from "axios";
 
 class ProposalSubmission extends Component {
   state = {
     inputs: {
-      name: '',
-      description: '',
-      c_type: '',
-      image_file: ''
+      name: "",
+      description: "",
+      c_type: "",
+      image_file: ""
     }
-  }
+  };
 
   handleInputChange = e => {
-    const value = e.target.type === 'file' ? e.target.files[0] : e.target.value;
-    // const formData = new FormData();
-    //
-    // if (e.target.type === "file") {
-    //   formData.append('image_file', e.target.files[0]);
-    //   console.log(formData)
-    // }
-    // console.log(formData)
+    const value = e.target.type === "file" ? e.target.files[0] : e.target.value;
     this.setState({
       inputs: {
         ...this.state.inputs,
@@ -28,32 +21,41 @@ class ProposalSubmission extends Component {
         created_at: Date.now()
       }
     });
-  }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.inputs)
 
-    // axios.post('/challenges', this.state.inputs)
-    //   .then(response => console.log(response))
-    //   .catch(error => console.log(error));
-    //
-    // this.props.history.push(`/${this.state.inputs.c_type}`);
-  }
+    axios
+      .post("/challenges", this.state.inputs)
+      .then(response => console.log(response))
+      .catch(error => console.log(error));
+
+    this.props.history.push(`/${this.state.inputs.c_type}`);
+  };
 
   render() {
     return (
       <div>
-        <h2 className='page-title'>Submit a Proposal</h2>
+        <h2 className="page-title">Submit a Proposal</h2>
         <form className="form" onSubmit={this.handleSubmit}>
-          <input onChange={this.handleInputChange} type="text" placeholder="name" name="name" />
+          <input
+            onChange={this.handleInputChange}
+            type="text"
+            placeholder="name"
+            name="name"
+          />
           <input
             onChange={this.handleInputChange}
             type="text"
             placeholder="description"
             name="description"
           />
-          <input onChange={this.handleInputChange} type="file" name="image_file" />
+          <input
+            onChange={this.handleInputChange}
+            type="file"
+            name="image_file"
+          />
           <select onChange={this.handleInputChange} name="c_type">
             <option />
             <option value="begginer">Begginer</option>

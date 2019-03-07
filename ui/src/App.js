@@ -1,8 +1,8 @@
-import React from 'react';
-import './App.scss';
+import React from "react";
+import "./App.scss";
 
-import Navigation from './components/Navigation';
-import Routes from './routes';
+import Navigation from "./components/Navigation";
+import Routes from "./routes";
 
 const App = () => (
   <div className="App">

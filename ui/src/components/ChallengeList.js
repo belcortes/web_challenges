@@ -1,8 +1,8 @@
-import React from 'react';
-import { Grid, Row } from 'react-bootstrap';
-import PropTypes from 'prop-types';
+import React from "react";
+import { Grid, Row } from "react-bootstrap";
+import PropTypes from "prop-types";
 
-import ChallengeListItem from './ChallengeListItem';
+import ChallengeListItem from "./ChallengeListItem";
 
 const ChallengeList = ({ challenges }) => (
   <Grid>
